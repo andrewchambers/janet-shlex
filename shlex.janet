@@ -18,3 +18,17 @@
   [s]
   (peg/match peg s))
 
+(defn- quote1
+  [arg]
+  (def buf (buffer/new (* (length arg) 2)))
+  (buffer/push-string buf "'")
+  (each c arg
+    (if (= c (chr "'"))
+      (buffer/push-string buf "'\\''")
+      (buffer/push-byte buf c)))
+  (buffer/push-string buf "'")
+  (string buf))
+
+(defn quote
+  [& args]
+  (string/join (map quote1 args) " "))
