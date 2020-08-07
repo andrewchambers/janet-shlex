@@ -6,5 +6,10 @@ Quick example:
 
 ```
  > (shlex/split ` "c d \" f" ' y z'  a b a\ b --cflags `)
-@["c d \" f" " y z" "a" "b" "a b" "--cflags"]
+@["c d \" f"
+  " y z"
+  "a"
+  "b"
+  "a b"
+  "--cflags"]
 ```
